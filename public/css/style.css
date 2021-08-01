@@ -187,7 +187,7 @@ a:hover {
     position: relative;
     color: #124265;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -2027,4 +2027,13 @@ section {
     background: #3194db;
     color: #fff;
     text-decoration: none;
+}
+
+.stepper .line {
+  width: 2px;
+  background-color: lightgrey !important;
+}
+
+.stepper .lead {
+  font-size: 1.1rem;
 }

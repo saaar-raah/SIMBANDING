@@ -26,9 +26,9 @@
     <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
     <div id="preloader"></div>
 
+    {{ TawkTo::widgetCode() }}
+    
     @include('layouts.scripts')
-
-
 </body>
 
 </html>

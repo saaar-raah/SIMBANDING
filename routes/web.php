@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AlurController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\pengumumanController;
-use App\Http\Controllers\landingpageController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,19 +21,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('landingpage');
-});
+})->name('landingpage');
 Route::get('/pengumuman', function () {
     return view('pengumuman');
 });
 Route::get('/FAQ', function () {
     return view('FAQ');
 });
+Route::get('/alur', function() {
+  return view('layouts.alur');
+});
+Route::get('/berkas', function(){
+  return view('layouts.berkas');
+});
+Route::get('/kontak', function(){
+  return view('layouts.kontak');
+});
 
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    });
+    })->name('dashboard');
     Route::get('/profile', function () {
         return view('admin.profile');
     });
@@ -42,5 +51,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pengumumanAdmin', pengumumanController::class);
     Route::resource('alurAdmin', AlurController::class);
     Route::resource('pesanAdmin', PesanController::class);
+    Route::resource('passwordAdmin', PasswordController::class);
 });
 require __DIR__.'/auth.php';
