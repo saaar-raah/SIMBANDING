@@ -29,13 +29,13 @@ Route::get('/FAQ', function () {
     return view('FAQ');
 });
 Route::get('/alur', function() {
-  return view('layouts.alur');
+  return view('alur');
 });
 Route::get('/berkas', function(){
-  return view('layouts.berkas');
+  return view('berkas');
 });
 Route::get('/kontak', function(){
-  return view('layouts.kontak');
+  return view('kontak');
 });
 
 

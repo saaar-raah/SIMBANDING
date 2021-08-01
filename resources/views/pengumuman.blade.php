@@ -65,7 +65,7 @@
                 @endforeach
             </div>
             <div class="d-flex justify-content-center p-3">
-                {{$pengumuman->links()}}
+                {{-- {{$pengumuman->links()}} --}}
             </div>
         </div>
     </section>
