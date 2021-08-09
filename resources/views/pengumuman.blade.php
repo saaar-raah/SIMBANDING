@@ -52,11 +52,11 @@
                 {{-- <div class="p-3 col-lg-3 col-md"> --}}
                     <div class="card col-lg-3 col-md-12 m-3 " style="width: 18rem;">
                         <div style="background-color: white; font-weight: bold;" class="card-header text-center">
-                            {{$pengumumans->judul}}
+                            {!!$pengumumans->judul!!}
                         </div>
                         <div class="card-body">
                             <img class="card-img-top" src="{{asset('/img/pengumuman/'.$pengumumans->foto)}}" alt="Card image cap">
-                            <p class="card-text mt-2">{{substr("$pengumumans->isi",0,52)}}...
+                            <p class="card-text mt-2">{{!!substr("$pengumumans->isi",0,52)!!}}...
                                 <a href="{{route('pengumumanAdmin.show',$pengumumans->id)}}"> Read More</a>
                             </p>
 

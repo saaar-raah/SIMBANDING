@@ -27,7 +27,7 @@
                     </div>
                     <div class="article-title aos-init aos-animate" data-aos="fade-left" data-aos-delay="100">
                         {{-- <h6><a href="#">Lifestyle</a></h6> --}}
-                        <h2>{{$pengumumans->judul}}</h2>
+                        <h2>{!!$pengumumans->judul!!}</h2>
                         <div class="media">
                             <div class="avatar">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="">

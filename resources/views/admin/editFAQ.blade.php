@@ -38,7 +38,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Pertanyaan</label>
-                                        <input type="text" name="pertanyaan" class="form-control" value="{{$FAQ->pertanyaan}}">
+                                        <textarea name="pertanyaan" class="pertanyaan" placeholder="Pertanyaan">{{ $FAQ->pertanyaan }}</textarea>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-11">
@@ -52,7 +52,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Jawaban</label>
-                                        <input name="jawaban" type="text" class="form-control" value="{{$FAQ->jawaban}}">
+                                        <textarea name="jawaban" class="jawaban" placeholder="Jawaban">{{ $FAQ->jawaban }}</textarea>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-10">
@@ -75,4 +75,16 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: "textarea.pertanyaan",
+  });
+  tinymce.init({
+    selector: "textarea.jawaban",
+  });
+</script>
 @endsection

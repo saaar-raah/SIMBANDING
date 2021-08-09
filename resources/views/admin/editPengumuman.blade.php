@@ -74,3 +74,15 @@
     </div>
 </div>
 @endsection
+
+referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: "textarea.judul",
+  });
+  tinymce.init({
+    selector: "textarea.isi",
+  });
+</script>
+@endsection

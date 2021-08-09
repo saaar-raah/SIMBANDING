@@ -47,7 +47,7 @@
                 <!-- Signup modal content -->
                 <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
                     aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 
                             <div class="modal-body">
@@ -65,11 +65,13 @@
                                     @csrf
                                     <div class="form-group">
                                         <label>Pertanyaan</label>
-                                        <input type="text" name="pertanyaan" class="form-control" placeholder="Pertanyaan">
+                                        {{-- <input type="text" name="pertanyaan" class="form-control" placeholder="Pertanyaan"> --}}
+                                        <textarea name="pertanyaan" class="pertanyaan" placeholder="Pertanyaan"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Jawaban</label>
-                                        <input name="jawaban" type="text" class="form-control" placeholder="Jawaban">
+                                        {{-- <input name="jawaban" type="text" class="form-control" placeholder="Jawaban"> --}}
+                                        <textarea name="jawaban" class="jawaban" placeholder="Jawaban"></textarea>
                                     </div>
 
                                     <div class="form-group text-center">
@@ -115,9 +117,9 @@
                             <tbody>
                                 @foreach ($FAQ as $FAQS)
                                 <tr>
-                                    <td>{{$FAQS->id}}</td>
-                                    <td>{{$FAQS->pertanyaan}}</td>
-                                    <td>{{$FAQS->jawaban}}</td>
+                                    <td>{{ $FAQS->id}}</td>
+                                    <td>{!! $FAQS->pertanyaan !!}</td>
+                                    <td>{!! $FAQS->jawaban !!}</td>
                                     <td>
                                     <a href="{{route('FAQAdmin.edit',$FAQS->id)}}"  class="btn waves-effect waves-light btn-warning">
                                        EDIT
@@ -153,4 +155,16 @@
     } );
 </script>
 @endpush
+
+<script src="https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: "textarea.pertanyaan",
+  });
+  tinymce.init({
+      selector: "textarea.jawaban",
+  });
+</script>
 @endsection

@@ -30,10 +30,10 @@
 
                     @foreach ($FAQ as $FAQS)
                     <li data-aos="fade-up" class="aos-init aos-animate">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-{{$FAQS->id}}">{{$FAQS->pertanyaan}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-{{$FAQS->id}}">{!!$FAQS->pertanyaan!!}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-{{$FAQS->id}}" class="collapse" data-parent=".faq-list">
                             <p>
-                                {{$FAQS->jawaban}}
+                                {!!$FAQS->jawaban!!}
                             </p>
                         </div>
                     </li>
@@ -50,3 +50,5 @@
     </section>
 
 @endsection
+
+
