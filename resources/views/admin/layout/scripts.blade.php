@@ -18,4 +18,5 @@
 <script src="{{asset('admin/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
 <script src="{{asset('admin/dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
 
+
 @stack('scripts')

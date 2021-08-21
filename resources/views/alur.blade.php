@@ -17,8 +17,8 @@
           @endif
         </div>
         <div>
-          <h5 class="text-dark">{{ $a->nama_alur }}</h5>
-          <p class="lead text-muted pb-3">{{ $a->isi }}</p>
+          <h5 class="text-dark">{!! $a->nama_alur !!}</h5>
+          <p class="lead text-muted pb-3">{!! $a->isi !!}</p>
         </div>
       </div>
       @endforeach

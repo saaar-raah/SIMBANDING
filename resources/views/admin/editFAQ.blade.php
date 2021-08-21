@@ -38,7 +38,9 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Pertanyaan</label>
-                                        <textarea name="pertanyaan" class="pertanyaan" placeholder="Pertanyaan">{{ $FAQ->pertanyaan }}</textarea>
+                                        <textarea name="pertanyaan" class="pertanyaan" placeholder="pertanyaan">
+                                            {!!$FAQ->pertanyaan!!}
+                                        </textarea>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-11">
@@ -52,7 +54,9 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Jawaban</label>
-                                        <textarea name="jawaban" class="jawaban" placeholder="Jawaban">{{ $FAQ->jawaban }}</textarea>
+                                        <textarea name="jawaban" class="jawaban" placeholder="Jawaban">
+                                            {!!$FAQ->jawaban!!}
+                                        </textarea>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-10">
@@ -75,16 +79,16 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js"
-  referrerpolicy="origin"></script>
-
-<script>
-  tinymce.init({
-    selector: "textarea.pertanyaan",
-  });
-  tinymce.init({
-    selector: "textarea.jawaban",
-  });
+@push('scripts')
+<script src='https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js' referrerpolicy="origin">
 </script>
+<script>
+    tinymce.init({
+      selector: "textarea.pertanyaan",
+    });
+    tinymce.init({
+        selector: "textarea.jawaban",
+    });
+  </script>
+@endpush
 @endsection

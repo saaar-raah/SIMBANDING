@@ -11,9 +11,9 @@
                         <div style="background: url({{asset('img/pengumuman/'.$pengumumans->foto)}}) no-repeat center center ; height:512px; opacity:0.8;">
                             <a href="{{route('pengumumanAdmin.show',$pengumumans->id)}}" class="testimonial-item ">
                                 <div class="pengumuman col-lg-12">
-                                    {{$pengumumans->judul}}
+                                    {!!$pengumumans->judul!!}
                                     <br>
-                                    <h6>{{substr("$pengumumans->isi",0,52)}}</h6>
+                                    <h6>{!!substr("$pengumumans->isi",0,52)!!}</h6>
                                 </div>
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="card-body">
                             <img class="card-img-top" src="{{asset('/img/pengumuman/'.$pengumumans->foto)}}" alt="Card image cap">
-                            <p class="card-text mt-2">{{!!substr("$pengumumans->isi",0,52)!!}}...
+                            <p class="card-text mt-2">{!!substr("$pengumumans->isi",0,52)!!}...
                                 <a href="{{route('pengumumanAdmin.show',$pengumumans->id)}}"> Read More</a>
                             </p>
 
@@ -65,7 +65,7 @@
                 @endforeach
             </div>
             <div class="d-flex justify-content-center p-3">
-                {{-- {{$pengumuman->links()}} --}}
+                {{$pengumuman->links()}}
             </div>
         </div>
     </section>

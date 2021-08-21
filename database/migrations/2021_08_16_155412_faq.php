@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlursTable extends Migration
+class Faq extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateAlursTable extends Migration
      */
     public function up()
     {
-        Schema::create('alur', function (Blueprint $table) {
+        Schema::create('faq', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_alur');
-            $table->string('isi');
-            $table->string('link');
-            $table->string('urutan')->unique();
+            $table->string('pertanyaan');
+            $table->string('jawaban');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateAlursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alur');
+        //
     }
 }

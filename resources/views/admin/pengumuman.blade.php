@@ -3,43 +3,13 @@
 <x-datatables />
 
 @section('content')
-<div class="page-breadcrumb">
-  <div class="row">
-    <div class="col-7 align-self-center">
-      <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">View Pengumuman</h4>
-      <div class="d-flex align-items-center">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-            <li class="breadcrumb-item text-muted active" aria-current="page">View Pengumuman</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-    {{-- <div class="col-5 align-self-center">
-            <div class="customize-input float-right">
-                <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                    <option selected="">Aug 19</option>
-                    <option value="1">July 19</option>
-                    <option value="2">Jun 19</option>
-                </select>
-            </div>
-        </div> --}}
-  </div>
-</div>
+
 <div class="container-fluid">
   <x-notif />
   <!-- ============================================================== -->
   <!-- Start Page Content -->
   <!-- ============================================================== -->
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Tambah Data</h4>
 
-        <p class="text-muted">
-          Tambah Data Pengumuman
-        </p>
 
         <!-- Signup modal content -->
         <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -70,6 +40,10 @@
                     <textarea class="isi" name="isi" class="form-control" placeholder="Isi"></textarea>
                   </div>
                   <div class="form-group">
+                    <label>Penulis</label>
+                    <input name="penulis" type="text" class="form-control" placeholder="Masukkan nama penulis" required>
+                </div>
+                  <div class="form-group">
                     <label>Foto</label>
                     <input name="foto" type="file" class=".form-control-file">
                   </div>
@@ -95,24 +69,22 @@
         </div><!-- /.modal -->
 
 
-        <div class="btn-list">
-          <!-- Custom width modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Tambah
-            Data</button>
 
-        </div>
 
-      </div> <!-- end card-body-->
-    </div> <!-- end card-->
-  </div> <!-- end col-->
   <!-- basic table -->
   <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Zero Configuration</h4>
-          <h6 class="card-subtitle">DataTables has most features enabled by default
+          <h4 class="card-title">PENGUMUMAN</h4>
+          <h6 class="card-subtitle">VIEW DATA PENGUMUMAN
           </h6>
+          <div class="btn-list pt-2 pb-2">
+            <!-- Custom width modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Tambah
+              Data</button>
+          </div>
+
           <div class="table-responsive">
             <table id="myTable" class="table table-striped table-bordered no-wrap">
               <thead>
@@ -120,6 +92,7 @@
                   <th>ID</th>
                   <th>JUDUL</th>
                   <th>ISI</th>
+                  <th>PENULIS</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -129,15 +102,18 @@
                   <td>{{$pengumumans->id}}</td>
                   <td>{!! $pengumumans->judul !!}</td>
                   <td>{!!$pengumumans->isi !!}</td>
+                  <td>{{$pengumumans->penulis}}</td>
                   <td>
-                    <a href="{{route('pengumumanAdmin.edit',$pengumumans->id)}}"
+                    <a style="border-radius: 15px;" href="{{route('pengumumanAdmin.edit',$pengumumans->id)}}"
                       class="btn waves-effect waves-light btn-warning">
-                      EDIT
+                      <i class="fas fa-edit"> EDIT</i>
                     </a>
                     <form class="btn" method="post" action="{{route('pengumumanAdmin.destroy',$pengumumans->id)}}">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn waves-effect waves-light btn-danger">DELETE</button>
+                      <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
+                        <i class="far fa-trash-alt"> DELETE</i>
+                      </button>
                     </form>
                   </td>
                 </tr>

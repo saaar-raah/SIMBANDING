@@ -293,6 +293,19 @@ a:hover {
     display: inline-block;
 }
 
+.get-started-btn1 {
+    margin-left: 25px;
+    background: #2487ce;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 15px 11px 15px;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+}
+
 .get-started-btn:hover {
     background: #2079b8;
     color: #fff;
@@ -2052,7 +2065,7 @@ body{margin-top:20px;}
 .gray-bg {
     background-color: #f5f5f5;
 }
-/* Blog 
+/* Blog
 ---------------------*/
 .blog-grid {
   box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
@@ -2389,7 +2402,7 @@ img {
     color: #20247b;
     font-size: 45px;
     margin: 0 0 15px;
-    border-left: 5px solid #fc5356;
+    /* border-left: 5px solid #fc5356; */
     padding-left: 15px;
 }
 .section-title {

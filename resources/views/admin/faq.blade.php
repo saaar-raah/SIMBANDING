@@ -4,12 +4,12 @@
 
 @section('content')
 
-<div class="page-breadcrumb">
+
 
     <x-notif/>
 
     <div class="row">
-        <div class="col-7 align-self-center">
+        {{-- <div class="col-7 align-self-center">
             <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">View FAQ</h4>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
@@ -19,7 +19,7 @@
                     </ol>
                 </nav>
             </div>
-        </div>
+        </div> --}}
         {{-- <div class="col-5 align-self-center">
             <div class="customize-input float-right">
                 <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
@@ -30,19 +30,17 @@
             </div>
         </div> --}}
     </div>
-</div>
+
 <div class="container-fluid">
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Tambah Data</h4>
+
+                {{-- <h4 class="card-title">Tambah Data</h4>
 
                 <p class="text-muted">
                     Tambah Data FAQ
-                </p>
+                </p> --}}
 
                 <!-- Signup modal content -->
                 <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
@@ -85,25 +83,22 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
-
-                <div class="btn-list">
-                    <!-- Custom width modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#signup-modal">Tambah Data</button>
-
-                </div>
-
-            </div> <!-- end card-body-->
-        </div> <!-- end card-->
-    </div> <!-- end col-->
     <!-- basic table -->
     <div class="row">
         <div class="col-12">
             <div class="card">
+
                 <div class="card-body">
-                    <h4 class="card-title">Zero Configuration</h4>
-                    <h6 class="card-subtitle">DataTables has most features enabled by default
+                    <h4 class="card-title">FREQUENTLY ASKED QUESTIONS</h4>
+                    <h6 class="card-subtitle">VIEW DATA FREQUENTLY ASKED QUESTIONS
                     </h6>
+
+                    <div class="btn-list pt-2 pb-2">
+                        <!-- Custom width modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#signup-modal">Tambah Data</button>
+                    </div>
+
                     <div class="table-responsive">
                         <table id="myTable" class="table table-striped table-bordered no-wrap">
                             <thead>
@@ -121,13 +116,20 @@
                                     <td>{!! $FAQS->pertanyaan !!}</td>
                                     <td>{!! $FAQS->jawaban !!}</td>
                                     <td>
-                                    <a href="{{route('FAQAdmin.edit',$FAQS->id)}}"  class="btn waves-effect waves-light btn-warning">
-                                       EDIT
-                                    </a>
+                                    {{-- <a href="{{route('FAQAdmin.edit',$FAQS->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
+                                        <i class="fas fa-edit"> EDIT</i>
+                                    </a> --}}
+                                    <button style="border-radius: 15px; color: #fff" class="btn waves-effect waves-light btn-warning">
+                                    <a href="{{route('FAQAdmin.edit',$FAQS->id)}}">
+                                        <i class="fas fa-edit" style="color: #FFFF"></i>
+                                    </a>EdiuqQ
+                                    </button>
                                     <form  class="btn" method="post" action="{{route('FAQAdmin.destroy',$FAQS->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                    <button type="submit" class="btn waves-effect waves-light btn-danger">DELETE</button>
+                                    <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
+                                        <i class="far fa-trash-alt"> DELETE</i>
+                                    </button>
                                     </form>
                                     </td>
                                 </tr>

@@ -38,7 +38,10 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Judul</label>
-                                        <input type="text" name="judul" class="form-control" value="{{$pengumuman->judul}}">
+                                        {{-- <input type="text" name="judul" class="form-control" value="{{$pengumuman->judul}}"> --}}
+                                        <textarea name="judul" class="judul" placeholder="judul">
+                                            {!!$pengumuman->judul!!}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +50,10 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Isi</label>
-                                        <input name="isi" type="text" class="form-control" value="{{$pengumuman->isi}}">
+                                        {{-- <input name="isi" type="text" class="form-control" value="{{$pengumuman->isi}}"> --}}
+                                        <textarea name="judul" class="judul" placeholder="judul">
+                                            {!!$pengumuman->isi!!}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +62,14 @@
                                     <div class="form-group">
                                         <label>Foto</label>
                                         <input type="file" class="form-control-file" name="foto">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Penulis</label>
+                                        <input name="isi" type="text" class="form-control" value="{{$pengumuman->penulis}}">
                                     </div>
                                 </div>
                             </div>
@@ -73,16 +87,16 @@
         </div>
     </div>
 </div>
-@endsection
-
-referrerpolicy="origin"></script>
-
-<script>
-  tinymce.init({
-    selector: "textarea.judul",
-  });
-  tinymce.init({
-    selector: "textarea.isi",
-  });
+@push('scripts')
+<script src='https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js' referrerpolicy="origin">
 </script>
+<script>
+    tinymce.init({
+      selector: "textarea.judul",
+    });
+    tinymce.init({
+        selector: "textarea.isi",
+    });
+  </script>
+@endpush
 @endsection

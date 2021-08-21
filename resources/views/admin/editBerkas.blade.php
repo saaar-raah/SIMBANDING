@@ -3,12 +3,12 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">
-            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Edit alur</h4>
+            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Edit berkas</h4>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
                         <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                        <li class="breadcrumb-item text-muted active" aria-current="page">Tambah alur</li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page">Tambah berkas</li>
                     </ol>
                 </nav>
             </div>
@@ -29,56 +29,51 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Edit alur</h4>
-                    <form method="POST" action="{{route('alurAdmin.update',$alur->id)}}" enctype="multipart/form-data">
+                    <h4 class="card-title">Edit berkas</h4>
+                    <form method="POST" action="{{route('berkasAdmin.update',$berkas->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label>Nama Alur</label>
-                                        {{-- <input type="text" name="nama_alur" class="form-control" value="{{$alur->nama_alur}}"> --}}
-                                        <textarea name="nama_alur" class="nama_alur" placeholder="nama alur">
-                                            {!!$alur->nama_alur!!}
+                                        <label>Judul</label>
+                                        <textarea name="judul" class="judul" placeholder="judul">
+                                            {!!$berkas->judul!!}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label>Label</label>
+                                        <input type="text" class="form-control" placeholder="col-md-11">
+                                    </div>
+                                </div> --}}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Isi</label>
+                                        <textarea name="isi" class="isi" placeholder="isi">
+                                            {!!$berkas->isi!!}
                                         </textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Isi</label>
-                                        <input name="isi" type="text" class="form-control" value="{{$alur->isi}}">
-                                        <textarea name="isi" class="isi" placeholder="isi">
-                                            {!!$alur->isi!!}
-                                        </textarea>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>Icon</label>
+                                        <input name="icon" type="text" class="form-control" value="{{$berkas->icon}}" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Link</label>
-                                        <input name="link" type="text" class="form-control" value="{{$alur->link}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Urutan</label>
-                                        <input name="urutan" type="text" class="form-control" value="{{$alur->urutan}}">
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="form-actions">
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-info">Submit</button>
-                                    <button type="reset" class="btn btn-dark">Reset</button>
-                                </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-info">Submit</button>
+                                <button type="reset" class="btn btn-dark">Reset</button>
                             </div>
                         </div>
                     </form>
@@ -87,13 +82,12 @@
         </div>
     </div>
 </div>
-
 @push('scripts')
 <script src='https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js' referrerpolicy="origin">
 </script>
 <script>
     tinymce.init({
-      selector: "textarea.nama_alur",
+      selector: "textarea.judul",
     });
     tinymce.init({
         selector: "textarea.isi",

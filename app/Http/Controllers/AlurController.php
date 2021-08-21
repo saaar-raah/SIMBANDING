@@ -15,7 +15,7 @@ class AlurController extends Controller
 
     public function create()
     {
-        return view('admin.addalur');
+        return view('admin.addAlur');
     }
 
     public function store(Request $request)

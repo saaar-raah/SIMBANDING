@@ -23,7 +23,10 @@ class PengumumanController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
+            'penulis' => 'required',
         ]);
+
+
         if (isset($request->foto)){
             $extention = $request->foto->extension();
             $image_name = time().'.'.$extention;
@@ -35,6 +38,7 @@ class PengumumanController extends Controller
             $pengumuman = pengumuman::create([
                 'judul' => $request->judul,
                 'isi' => $request->isi,
+                'penulis' => $request->penulis,
                 'foto' => $image_name,
             ]);
         return redirect()->route('pengumumanAdmin.index')

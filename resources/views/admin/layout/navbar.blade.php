@@ -20,7 +20,7 @@
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <img src="{{asset('img/SIBANDING.png')}}" alt="homepage" class="dark-logo" height="21" />
+                        <h4 style="color:#16507b;" class="dark-logo">AdminSIBANDING</h4>
                         <!-- Light Logo text -->
                         {{-- <img src="{{asset('img/SIBANDING.png')}}" class="light-logo" alt="homepage" /> --}}
                     </span>
@@ -193,7 +193,7 @@
                         <form method="POST" action="{{route('logout')}}">
                             @csrf
                         <div class="pl-4 p-3">
-                            <button type="submit" class="btn btn-sm btn-info">Logout</button>
+                            <button type="submit" style="border-radius: 6px;" class="btn-sm btn-info fas fa-sign-out-alt"> LOGOUT</button>
                         </div>
                         </form>
                     </div>

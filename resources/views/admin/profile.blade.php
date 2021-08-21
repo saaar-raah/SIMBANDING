@@ -1,14 +1,15 @@
 @extends('admin.master')
 @section('content')
-    <div class="container-fluid">
-        <div class="row align-items-center">
+    <div  class="container-fluid">
+
+        <div style="background-color: white" class="row align-items-center">
             <div class="col-lg-4 text-center mb-4  ">
                 <img src="{{asset('img/ava/'.Auth::user()->foto)}}" alt="image" class="img-thumbnail" height="200" width="200">
                 <p class="mt-3 mb-0">
                 </p>
             </div>
             <div class="col-7">
-                <div class="card">
+                <div  class="card mt-5 mb-5">
                     <div class="card-body">
                         <h4 class="card-title">Edit Profile</h4>
                         <form action="{{route('profile.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
@@ -52,3 +53,4 @@
         </div>
     </div>
 @endsection
+

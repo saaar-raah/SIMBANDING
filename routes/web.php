@@ -2,6 +2,7 @@
 use App\Http\Controllers\testController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\berkasController;
 use App\Http\Controllers\AlurController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\pengumumanController;
@@ -37,7 +38,7 @@ Route::get('/berkas', function(){
 Route::get('/kontak', function(){
   return view('kontak');
 });
-
+Route::resource('pengumumanAdmin', pengumumanController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
@@ -48,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::resource('profile', ProfileController::class);
     Route::resource('FAQAdmin', FAQController::class);
-    Route::resource('pengumumanAdmin', pengumumanController::class);
+    Route::resource('berkasAdmin', berkasController::class);
     Route::resource('alurAdmin', AlurController::class);
     Route::resource('pesanAdmin', PesanController::class);
     Route::resource('passwordAdmin', PasswordController::class);

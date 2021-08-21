@@ -57,7 +57,9 @@ class ProfileController extends Controller
         if (isset($request->foto)){
             $extention = $request->foto->extension();
             $image_name = time().'.'.$extention;
+            if($user->foto != null){
             unlink(public_path('img/ava/'.$user->foto));
+            }
             $request->foto->move(public_path('img/ava'),$image_name);
             $user->foto = $image_name;
 

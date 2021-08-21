@@ -3,7 +3,7 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">
-            <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Morning {{Auth::user()->name}}!</h3>
+            <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Selamat Datang, {{Auth::user()->name}}!</h3>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
@@ -63,19 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex d-lg-flex d-md-block align-items-center">
-                    <div>
-                        <h2 class="text-dark mb-1 font-weight-medium">{{$pesan->count()}}</h2>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Data Pesan</h6>
-                    </div>
-                    <div class="ml-auto mt-md-3 mt-lg-0">
-                        {{-- <span class="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 @endsection
