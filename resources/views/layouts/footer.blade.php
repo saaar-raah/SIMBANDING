@@ -1,15 +1,43 @@
 
-<section id="contact" class="contact">
+<section id="contact" class="contact pt-5 pb-5">
     <div class="container" data-aos="fade-up">
+        <div class="d-flex p-2">
+            <div class="row">
+                <div class="col">
+                    <div d-flex>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Lambang_ITK.png" style="height: 170px; width: auto"></img>
+                    </div>
+                </div>
 
-        <div class="row mt-1">
+            </div>
+
+            <div class="row">
+                <div class="col mr-10">
+                    <div class="d-flex-row">
+                        <i class="far fa-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>humas@itk.ac.id</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="email">
+                        <i class="far fa-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>humas@itk.ac.id</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        {{-- <div class="row mt-1">
             <div class="col-lg-4">
                 <div class="info">
-                    <div class="address">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Location:</h4>
-                        <p>Jl. Soekarno Hatta No.KM 15, Karang Joang, Kec. Balikpapan Utara, Kota Balikpapan, Kalimantan Timur 76127</p>
-                    </div>
 
                     <div class="email">
                         <i class="far fa-envelope"></i>
@@ -36,7 +64,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
     </div>
 </section>

@@ -909,19 +909,19 @@ section {
     top: 10px;
 }
 
-.testimonials .testimonial-item p {
+/* .testimonials .testimonial-item p {
     font-style: italic;
-    margin: 0 15px 15px 15px; /* woi */
+    margin: 0 15px 15px 15px;
     padding: 20px;
     background: #f3f9fd;
     position: relative;
     margin-bottom: 35px;
     border-radius: 6px;
-}
+} */
 
 .pengumuman {
     position: absolute;
-    bottom: 8px;
+    bottom: 0px;
     background-color: black;
     font-size: 18px;
     padding-bottom: 40px;
@@ -1584,7 +1584,9 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-
+.contact {
+    background: #2487ce;
+}
 .contact .info {
     width: 100%;
     background: #fff;

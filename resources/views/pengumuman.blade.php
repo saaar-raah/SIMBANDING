@@ -2,13 +2,14 @@
 @section('content')
 
     <section id="hero" class="d-flex align-items-center testimonials">
-        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div style="width: 100%; margin-right: auto;margin-left: auto;"
+        class=" position-relative" data-aos="fade-up" data-aos-delay="100">
             <div class="row content-center">
                 <div class="col-lg-12 text-left">
 
                     <div class="owl-carousel testimonials-carousel">
                         @foreach ($carouselpengumuman as $pengumumans)
-                        <div style="background: url({{asset('img/pengumuman/'.$pengumumans->foto)}}) no-repeat center center ; height:512px; opacity:0.8;">
+                        <div style="background: url({{asset('img/pengumuman/'.$pengumumans->foto)}}) no-repeat center center ; height:550px; opacity:0.8;">
                             <a href="{{route('pengumumanAdmin.show',$pengumumans->id)}}" class="testimonial-item ">
                                 <div class="pengumuman col-lg-12">
                                     {!!$pengumumans->judul!!}
@@ -24,7 +25,7 @@
         </div>
     </section>
 
-    <section id="pengumuman" class="services section-bg d-flex align-items-center mt-4">
+    <section id="pengumuman" class="services section-bg d-flex align-items-center pt-0 pb-0">
         <div class="container position-relative aos-init aos-animate" data-aos="fade-up">
 
             <div class="row ">

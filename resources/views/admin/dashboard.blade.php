@@ -1,8 +1,8 @@
 @extends('admin.master')
 @section('content')
 <div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-7 align-self-center">
+    <div class="card-group">
+        <div class="p-2">
             <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Selamat Datang, {{Auth::user()->name}}!</h3>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
@@ -19,11 +19,11 @@
 <div class="container-fluid">
     <div class="card-group">
         <div class="card border-right">
-            <div class="card-body">
-                <div class="d-flex  d-lg-flex d-md-block align-items-center">
+            <div class="card-body d-flex justify-content-center" >
+                <div class="d-flex   d-lg-flex d-md-block align-items-center">
                     <div>
-                        <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">{{$FAQ->count()}}</h2>
+                        <div class="d-inline-flex align-items-center ">
+                            <h2 style="margin-left: 20px" class="text-dark mb-1 font-weight-medium">{{$FAQ->count()}}</h2>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Data FAQ</h6>
                     </div>
@@ -34,10 +34,25 @@
             </div>
         </div>
         <div class="card border-right">
-            <div class="card-body">
+            <div class="card-body d-flex justify-content-center">
+                <div class="d-flex  d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <div class="d-inline-flex align-items-center">
+                            <h2 style="margin-left: 30px" class="text-dark mb-1 font-weight-medium">{{$berkas->count()}}</h2>
+                        </div>
+                        <h6 class="text-muted center font-weight-normal mb-0 w-100 text-truncate">Data Berkas</h6>
+                    </div>
+                    <div class="ml-auto mt-md-3 mt-lg-0">
+                        {{-- <i class="fas fa-question opacity-7 text-muted"></i> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-right">
+            <div class="card-body d-flex justify-content-center">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">{{$pengumuman->count()}}</h2>
+                        <h2 style="margin-left: 55px" class="text-dark mb-1 w-100 text-truncate font-weight-medium">{{$pengumuman->count()}}</h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Data Pengumuman
                         </h6>
                     </div>
@@ -48,11 +63,11 @@
             </div>
         </div>
         <div class="card border-right">
-            <div class="card-body">
+            <div class="card-body d-flex justify-content-center">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">{{$alur->count()}}</h2>
+                            <h2 style="margin-left: 20px" class="text-dark mb-1 font-weight-medium">{{$alur->count()}}</h2>
 
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Data Alur</h6>

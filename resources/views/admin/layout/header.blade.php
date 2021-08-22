@@ -18,11 +18,12 @@
     <title>ADMIN - SIBANDING</title>
     <!-- Custom CSS -->
     <link href="{{asset('admin/assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/icofont.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/icofont.min.css')}}"> --}}
     <link href="{{asset('admin/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{asset('admin/dist/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

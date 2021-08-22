@@ -27,14 +27,14 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        Paginator::useBootstrap();
-        View::share('FAQ', FAQ::get());
-        View::share('alur', alur::orderBy('urutan','asc')->get());
-        View::share('pesan', pesan::get());
-        View::share('berkas', berkas::get());
-        View::share('pengumuman', pengumuman::paginate(6));
-        View::share('carouselpengumuman', pengumuman::latest()->paginate(3));
-        View::share('newspengumuman', pengumuman::latest()->paginate(5));
-    }
+    // {
+    //     Paginator::useBootstrap();
+    //     View::share('FAQ', FAQ::get());
+    //     View::share('alur', alur::orderBy('urutan','asc')->get());
+    //     View::share('pesan', pesan::get());
+    //     View::share('berkas', berkas::get());
+    //     View::share('pengumuman', pengumuman::paginate(6));
+    //     View::share('carouselpengumuman', pengumuman::latest()->paginate(3));
+    //     View::share('newspengumuman', pengumuman::latest()->paginate(5));
+    // }
 }

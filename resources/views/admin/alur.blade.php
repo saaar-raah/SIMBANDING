@@ -94,9 +94,11 @@
                                     <td>{{$alurs->link}}</td>
                                     <td>{{$alurs->urutan}}</td>
                                     <td>
-                                    <a href="{{route('alurAdmin.edit',$alurs->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
-                                        <i class="fas fa-edit"> EDIT</i>
-                                    </a>
+                                        <button style="border-radius: 15px; color: #fff" class="btn waves-effect waves-light btn-warning">
+                                            <a href="{{route('alurAdmin.edit',$alurs->id)}}">
+                                                <i class="fas fa-edit" style="color: #FFFF"></i>
+                                            </a>Edit
+                                            </button>
                                     <form  class="btn" method="post" action="{{route('alurAdmin.destroy',$alurs->id)}}">
                                         @csrf
                                         @method('DELETE')

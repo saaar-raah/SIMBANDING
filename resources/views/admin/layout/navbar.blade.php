@@ -7,12 +7,12 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <div class="navbar-brand">
+            <div class="navbar-brand d-flex justify-content-center mt-3">
                 <!-- Logo icon -->
                 <a href="/">
-                    <b class="logo-icon">
+                    <b class="logo-icon d-flex justify-content-center">
                         <!-- Dark Logo icon -->
-                        <img src="https://itk.ac.id/wp-content/uploads/2020/04/cropped-site-logo-32x32.png"  alt="homepage" class="dark-logo" />
+                        <img style="width: 70px; height: auto" src="https://pmb.itk.ac.id/assets/layout/image/itk.png"  alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
                         <img src="{{asset('admin/assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
                     </b>
@@ -20,7 +20,7 @@
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <h4 style="color:#16507b;" class="dark-logo">AdminSIBANDING</h4>
+                        <h4 style="color:#16507b;">AdminSIBANDING</h4>
                         <!-- Light Logo text -->
                         {{-- <img src="{{asset('img/SIBANDING.png')}}" class="light-logo" alt="homepage" /> --}}
                     </span>

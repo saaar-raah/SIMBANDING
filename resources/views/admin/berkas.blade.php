@@ -54,7 +54,7 @@
                                     </a>
                                 </div>
 
-                                <form  method="POST" action="{{route('berkasAdmin.store')}}" class="pl-3 pr-3" action="#">
+                                <form  method="POST" action="{{route('berkasAdmin.store')}}" class="pl-3 pr-3" action="#" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label>Nama Berkas</label>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Icon</label>
-                                        <input name="icon" type="text" class="form-control" placeholder="Masukkan Icon dari fontawesome.com" required>
+                                        <input name="icon" type="file" class="form-control" placeholder="Masukkan Icon dari fontawesome.com" required>
                                     </div>
 
                                     <div class="form-group text-center">
@@ -114,9 +114,11 @@
                                     <td>{!! $item->isi !!}</td>
                                     <td>{!! $item->icon !!}</td>
                                     <td>
-                                    <a href="{{route('berkasAdmin.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
-                                        <i class="fas fa-edit"> EDIT</i>
-                                    </a>
+                                        <button style="border-radius: 15px; color: #fff" class="btn waves-effect waves-light btn-warning">
+                                            <a href="{{route('berkasAdmin.edit',$item->id)}}">
+                                                <i class="fas fa-edit" style="color: #FFFF"></i>
+                                            </a>Edit
+                                            </button>
                                     <form  class="btn" method="post" action="{{route('berkasAdmin.destroy',$item->id)}}">
                                         @csrf
                                         @method('DELETE')
