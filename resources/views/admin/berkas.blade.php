@@ -123,7 +123,7 @@
                                         @csrf
                                         @method('DELETE')
                                     <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
-                                        <i class="far fa-trash-alt"> DELETE</i>
+                                        <i class="far fa-trash-alt"></i>
                                     </button>
                                     </form>
                                     </td>

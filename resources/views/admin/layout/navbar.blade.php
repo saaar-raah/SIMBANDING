@@ -20,7 +20,7 @@
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <h4 style="color:#16507b;">AdminSIBANDING</h4>
+                        <h4 style="color:#16507b"> <strong>  AdminSIBANDING</strong></h4>
                         <!-- Light Logo text -->
                         {{-- <img src="{{asset('img/SIBANDING.png')}}" class="light-logo" alt="homepage" /> --}}
                     </span>

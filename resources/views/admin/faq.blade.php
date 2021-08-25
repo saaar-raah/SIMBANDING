@@ -89,8 +89,8 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h4 class="card-title">FREQUENTLY ASKED QUESTIONS</h4>
-                    <h6 class="card-subtitle">VIEW DATA FREQUENTLY ASKED QUESTIONS
+                    <h4 class="card-title">Frequently Asked Question</h4>
+                    <h6 class="card-subtitle">Halaman untuk mengatur pertanyaan yang sering ditanyakan oleh pengguna.
                     </h6>
 
                     <div class="btn-list pt-2 pb-2">
@@ -103,9 +103,9 @@
                         <table id="myTable" class="table table-striped table-bordered no-wrap">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>PERTANYAAN</th>
-                                    <th>JAWABAN</th>
+                                    <th>No.</th>
+                                    <th>Pertanyaan</th>
+                                    <th>Jawaban</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -122,13 +122,13 @@
                                     <button style="border-radius: 15px; color: #fff" class="btn waves-effect waves-light btn-warning">
                                     <a href="{{route('FAQAdmin.edit',$FAQS->id)}}">
                                         <i class="fas fa-edit" style="color: #FFFF"></i>
-                                    </a>EdiuqQ
+                                    </a>Edit
                                     </button>
                                     <form  class="btn" method="post" action="{{route('FAQAdmin.destroy',$FAQS->id)}}">
                                         @csrf
                                         @method('DELETE')
                                     <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
-                                        <i class="far fa-trash-alt"> DELETE</i>
+                                        <i class="far fa-trash-alt"></i> Delete
                                     </button>
                                     </form>
                                     </td>
