@@ -4,15 +4,15 @@
 
         <div style="background-color: white" class="row align-items-center">
             <div class="col-lg-4 text-center mb-4  ">
-                <img src="{{asset('img/ava/'.Auth::user()->foto)}}" alt="image" class="img-thumbnail" height="200" width="200">
+                <img src="{{URL::asset('img/ava/'.Auth::user()->foto)}}" alt="image" class="img-thumbnail" height="200" width="200">
                 <p class="mt-3 mb-0">
                 </p>
             </div>
-            <div class="col-7">
+            <div class="col-lg">
                 <div  class="card mt-5 mb-5">
                     <div class="card-body">
                         <h4 class="card-title">Edit Profile</h4>
-                        <form action="{{route('profile.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{URL::route('profile.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-body">
@@ -36,14 +36,25 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Foto</label>
-                                            <input type="file" name="foto" class="form-control-file" >
+                                            <div class="">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Upload</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" name="foto" class="custom-file-input" id="inputGroupFile01">
+                                                        <label class="custom-file-label" for="inputGroupFile01">{{Auth::user()->foto}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-info">Submit</button>
+                                <div class="col-md-8 pl-0">
+                                    <div class="form-actions">
+                                        <button style="border-radius: 15px" type="submit" class="btn btn-info">Submit</button>
+                                    </div>
+        
                                 </div>
                             </div>
                         </form>

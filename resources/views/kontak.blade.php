@@ -5,7 +5,7 @@
     <h2>Hubungi Kami</h2>
   </div>
   <div class="section-form">
-  <form action="{{route('pesanAdmin.store')}}" method="post" role="form" class="php-email-form">
+  <form action="{{URL::route('pesanAdmin.store')}}" method="post" role="form" class="php-email-form">
     @csrf
     <div class="form-row">
       <div class="col-md-6 form-group">

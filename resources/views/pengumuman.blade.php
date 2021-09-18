@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    <section id="hero" class="d-flex align-items-center testimonials">
+    {{-- <section id="hero" class="d-flex align-items-center testimonials">
         <div style="width: 100%; margin-right: auto;margin-left: auto;"
         class=" position-relative" data-aos="fade-up" data-aos-delay="100">
             <div class="row content-center">
@@ -23,19 +23,20 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section id="pengumuman" class="services section-bg d-flex align-items-center pt-0 pb-0">
-        <div class="container position-relative aos-init aos-animate" data-aos="fade-up">
+    {{-- <section id="pengumuman" class="services section-bg d-flex align-items-center pt-0 pb-0">  --}}
+        <section id="berkas" class="services">
+            <div class="container mt-5" data-aos="fade-up">
 
             <div class="row ">
                 <div class="section-title">
-                    <h1>PENGUMUMAN</h1>
+                    <h3>Pengumuman</h3>
                     <h6>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
                     </h6>
                 </div>
             </div>
-            <div class="row d-flex justify-content-around">
+            <div class="row d-flex justify-content-center   ">
                 {{-- <div class="card-deck "> --}}
                 @foreach ($pengumuman as $pengumumans)
                 {{-- <div class="col-lg-3 col-md-12 mt-auto d-flex align-items-stretch w-100 h-100 mt-4 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
@@ -51,14 +52,14 @@
 
                 {{-- <div class="col-lg-3 col-md-12 mt-auto d-flex align-items-stretch w-100 h-100 mt-4 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200"> --}}
                 {{-- <div class="p-3 col-lg-3 col-md"> --}}
-                    <div class="card col-lg-3 col-md-12 m-3 " style="width: 18rem;">
+                    <div class="card-deck col-lg-3 col-md-12 m-3 " style="width: 18rem; border-radius: 15px; box-shadow: 1px 2px 2px 2px #ccc">
                         <div style="background-color: white; font-weight: bold;" class="card-header text-center">
                             {!!$pengumumans->judul!!}
                         </div>
-                        <div class="card-body">
-                            <img class="card-img-top" src="{{asset('/img/pengumuman/'.$pengumumans->foto)}}" alt="Card image cap">
+                        <div class="card-body ">
+                            <img class="card-img-top" style="border-radius: 10px" src="{{URL::asset('/img/pengumuman/'.$pengumumans->foto)}}" alt="Card image cap">
                             <p class="card-text mt-2">{!!substr("$pengumumans->isi",0,52)!!}...
-                                <a href="{{route('pengumumanAdmin.show',$pengumumans->id)}}"> Read More</a>
+                                <a href="{{URL::route('pengumumanAdmin.show',$pengumumans->id)}}"> Read More</a>
                             </p>
 
                         </div>

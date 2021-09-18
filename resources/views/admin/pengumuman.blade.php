@@ -18,16 +18,14 @@
 
               <div class="modal-body">
                 <div class="text-center mt-2 mb-4">
-                  <a href="index.html" class="text-success">
                     {{-- <span><img class="mr-2" src="../assets/images/logo-icon.png"
                                                 alt="" height="18"><img
                                                 src="../assets/images/logo-text.png" alt=""
                                                 height="18"></span> --}}
                     <h3 class="text-dark">Tambah Data</h3>
-                  </a>
                 </div>
 
-                <form method="POST" action="{{route('pengumumanAdmin.store')}}" class="pl-3 pr-3 w-100"
+                <form method="POST" action="{{URL::route('pengumumanAdmin.store')}}" class="pl-3 pr-3 w-100"
                   enctype="multipart/form-data">
                   @csrf
                   <div class="form-group w-100">
@@ -45,18 +43,18 @@
                 </div>
                   <div class="form-group">
                     <label>Foto</label>
-                    <input name="foto" type="file" class=".form-control-file">
+                    <div class="">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="foto" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
                   </div>
-                  {{--
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">I
-                                                accept <a href="#">Terms and Conditions</a></label>
-                                        </div>
-                                    </div> --}}
-
                   <div class="form-group text-center">
                     <button class="btn btn-primary" type="submit">Submit</button>
                   </div>
@@ -76,43 +74,54 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">PENGUMUMAN</h4>
-          <h6 class="card-subtitle">VIEW DATA PENGUMUMAN
+          <h4 class="card-title">Pengumuman</h4>
+          <h6 class="card-subtitle">Halaman untuk mengatur pengumuman.
           </h6>
           <div class="btn-list pt-2 pb-2">
             <!-- Custom width modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Tambah
-              Data</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal"> <p style="font-size: 14px"><strong>New Data</strong></p></button>
           </div>
 
           <div class="table-responsive">
-            <table id="myTable" class="table table-striped table-bordered no-wrap">
-              <thead>
+            <table id="myTable" class="table table-sm-td table-hover table-striped table-bordered no-wrap">
+              <thead class="thead-primary">
                 <tr>
-                  <th>ID</th>
-                  <th>JUDUL</th>
-                  <th>ISI</th>
-                  <th>PENULIS</th>
+                  <th>No.</th>
+                  <th>Judul</th>
+                  <th>Isi</th>
+                  <th>Penulis</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($pengumuman as $pengumumans)
                 <tr>
-                  <td>{{$pengumumans->id}}</td>
-                  <td>{!! $pengumumans->judul !!}</td>
-                  <td>{!!$pengumumans->isi !!}</td>
-                  <td>{{$pengumumans->penulis}}</td>
-                  <td>
-                    <a style="border-radius: 15px;" href="{{route('pengumumanAdmin.edit',$pengumumans->id)}}"
-                      class="btn waves-effect waves-light btn-warning">
-                      <i class="fas fa-edit"> EDIT</i>
+                  <td style="text-align: center;">{{$pengumumans->id}}</td>
+                  <td style=
+                  "max-width: 18rem;
+                  white-space: nowrap;
+                  overflow: auto;
+                  text-overflow: ellipsis;">{!!$pengumumans->judul!!}</td>
+                  <td style=
+                  "max-width: 30rem;
+                  white-space: nowrap;
+                  overflow: auto;
+                  text-overflow: ellipsis;">{!!$pengumumans->isi!!}</td>
+                  <td style=
+                  "max-width: 15rem;
+                  white-space: nowrap;
+                  overflow: auto;
+                  text-overflow: ellipsis;">{!!$pengumumans->penulis!!}</td>
+                  <td style="text-align: center;">
+                    <a style="border-radius: 15px" href="{{route('pengumumanAdmin.edit',$pengumumans->id)}}"
+                      class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1">
+                      <i class="fas fa-edit"></i> Edit
                     </a>
-                    <form class="btn" method="post" action="{{route('pengumumanAdmin.destroy',$pengumumans->id)}}">
+                    <form class="btn p-0" method="post" action="{{URL::route('pengumumanAdmin.destroy',$pengumumans->id)}}">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
-                        <i class="far fa-trash-alt"> DELETE</i>
+                      <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
+                        <i class="far fa-trash-alt"></i> Delete
                       </button>
                     </form>
                   </td>
@@ -148,10 +157,22 @@
 <script>
   tinymce.init({
     selector: "textarea.judul",
-  });
+    min_height: 300,
+    max_height: 500,
+    plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+    toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+    toolbar_mode: 'wrap',
+    menubar: false,
+    branding: false,  });
   tinymce.init({
-      selector: "textarea.isi",
-  });
+    selector: "textarea.isi",
+    min_height: 300,
+    max_height: 500,
+    plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+    toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+    toolbar_mode: 'wrap',
+    menubar: false,
+    branding: false,  });
 </script>
 
 @endsection

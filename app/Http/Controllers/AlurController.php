@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\alur;
+use App\alur;
 use Illuminate\Http\Request;
 
 class AlurController extends Controller
@@ -27,7 +27,6 @@ class AlurController extends Controller
             $alur = alur::create([
                 'nama_alur' => $request->nama_alur,
                 'isi' => $request->isi,
-                'link' => $request->link,
                 'urutan' => $request->urutan,
             ]);
         return redirect()->route('alurAdmin.index')
@@ -55,7 +54,6 @@ class AlurController extends Controller
         $alur = alur::find($id);
         $alur->nama_alur = $request->get('nama_alur');
         $alur->isi = $request->get('isi');
-        $alur->link = $request->get('link');
         $alur->urutan = $request->get('urutan');
 
         $alur->save();

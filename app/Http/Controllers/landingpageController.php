@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\FAQ;
-use App\Models\contoh;
+use App\FAQ;
+use App\contoh;
 use Illuminate\Http\Request;
 
 class landingpageController extends Controller

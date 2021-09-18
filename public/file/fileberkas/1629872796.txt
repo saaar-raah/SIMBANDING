@@ -1,0 +1,620 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "V0JQdOcQx5sK",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "V0JQdOcQx5sK",
+    "outputId": "1a3a9a27-8cd8-4034-a3b0-ba2a599e207a",
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "#pip install Sastrawi"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "polish-failure",
+   "metadata": {
+    "id": "polish-failure"
+   },
+   "outputs": [],
+   "source": [
+    "import numpy\n",
+    "import pandas as pd\n",
+    "import requests\n",
+    "import math\n",
+    "from bs4 import BeautifulSoup\n",
+    "from Sastrawi.Stemmer.StemmerFactory import StemmerFactory\n",
+    "from sklearn.feature_extraction.text import TfidfVectorizer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "quarterly-sphere",
+   "metadata": {
+    "id": "quarterly-sphere"
+   },
+   "outputs": [],
+   "source": [
+    "factory = StemmerFactory()\n",
+    "stemmer = factory.create_stemmer()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "eGh3ncXZfsB5",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "eGh3ncXZfsB5",
+    "outputId": "8670a1f3-3e23-4865-b2c5-ee8c6dd3a3be"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['https://www.kompas.com/skola/read/2020/12/21/164007469/perkembangan-teknologi-informasi-dan-komunikasi-di-indonesia?page=all']\n",
+      "['https://www.sma-ypunila.sch.id/artikel-1055-sejarah-perkembangan-teknologi-informasi-dan-komunikasi.html']\n",
+      "['https://puspindes.pemalangkab.go.id/tren-perkembangan-teknologi-baru-di-tahun-2021/']\n",
+      "['https://si.ittelkom-pwt.ac.id/2018/03/03/perkembangan-teknologi-informasi-masa-kini/']\n",
+      "['https://www.kominfo.go.id/content/detail/3960/sekjen-kominfo-kehidupan:perkembangan-tik-berikan-manfaat-besar-bagi-bidang-kehidupan/0/berita_satker']\n",
+      "['https://tirto.id/apa-saja-dampak-positif-negatif-teknologi-informasi-dan-komunikasi-gaTD']\n",
+      "['https://www.akseleran.co.id/blog/perkembangan-teknologi/']\n",
+      "['https://dcs.binus.ac.id/2021/01/28/perkembangan-teknologi-informasi-dalam-perspektif-tata-kelola-informatika-di-indonesia/']\n",
+      "['https://journal.universitassuryadarma.ac.id/index.php/jsi/article/view/46']\n",
+      "['https://informatika.unimal.ac.id/index/page/35/sejarah']\n",
+      "['https://fatek.unsrat.ac.id/informatika/?page_id=117']\n",
+      "['https://qwords.com/blog/sejarah-tik/']\n",
+      "['https://if.unikom.ac.id/profil/visi-misi/']\n",
+      "['https://stt-pomosda.ac.id/tifs/']\n"
+     ]
+    }
+   ],
+   "source": [
+    "import csv\n",
+    "\n",
+    "docList = []\n",
+    "with open('data.csv') as csv_file:\n",
+    "    csv_reader = csv.reader(csv_file)\n",
+    "    for row in csv_reader:\n",
+    "        print(row)\n",
+    "        r = requests.get(row[0])\n",
+    "        soup = BeautifulSoup(r.content, 'html5lib')\n",
+    "        docList.append(soup)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "exceptional-parks",
+   "metadata": {
+    "id": "exceptional-parks"
+   },
+   "outputs": [],
+   "source": [
+    "# URL1 = \"https://id.theasianparent.com/11-resep-masakan-indonesia-populer\"\n",
+    "# URL2 = \"https://www.masakapahariini.com/resep-masakan/masakan-tradisional/\"\n",
+    "# URL3 = \"https://lestariweb.com/AyamGeprek.php\"\n",
+    "# r1 = requests.get(URL1)\n",
+    "# r2 = requests.get(URL2)\n",
+    "# r3 = requests.get(URL3)\n",
+    "# soup1 = BeautifulSoup(r1.content, 'html5lib')\n",
+    "# soup2 = BeautifulSoup(r2.content, 'html5lib')\n",
+    "# soup3 = BeautifulSoup(r3.content, 'html5lib')\n",
+    "# # soup.prettify()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "parliamentary-template",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "parliamentary-template",
+    "outputId": "640f7c12-9698-4d0b-a16f-80af41b39304"
+   },
+   "outputs": [],
+   "source": [
+    "#docList"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "resistant-consistency",
+   "metadata": {
+    "id": "resistant-consistency"
+   },
+   "outputs": [],
+   "source": [
+    "def createDocument(document):\n",
+    "    documents = document.find_all('div')\n",
+    "    for content in documents:\n",
+    "        content = content.get_text()\n",
+    "        return content"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "affected-capital",
+   "metadata": {
+    "id": "affected-capital"
+   },
+   "outputs": [],
+   "source": [
+    "def creatListDocument(listDoc):\n",
+    "    docs = []\n",
+    "    for i in docList:\n",
+    "        docs.append(createDocument(i))\n",
+    "        \n",
+    "    return docs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "nuclear-elder",
+   "metadata": {
+    "id": "nuclear-elder"
+   },
+   "outputs": [],
+   "source": [
+    "# creatListDocument(docList)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "cordless-abraham",
+   "metadata": {
+    "id": "cordless-abraham"
+   },
+   "outputs": [],
+   "source": [
+    "def listOfWord(listDocument):\n",
+    "    listOfWords = []\n",
+    "    \n",
+    "    for sentence in listDocument:\n",
+    "        for word in stemmer.stem(sentence).split(\" \"):\n",
+    "            if word not in listOfWords:\n",
+    "                listOfWords.append(word)\n",
+    "                \n",
+    "    return listOfWords"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "thirty-flooring",
+   "metadata": {
+    "id": "thirty-flooring"
+   },
+   "outputs": [],
+   "source": [
+    "def createNumOfWords(listOfWord,lenDocument):\n",
+    "    numOfWords = []\n",
+    "    \n",
+    "    for i in range(lenDocument):\n",
+    "        numOfWords.append(dict(zip(listOfWord, [0 for i in range(len(listOfWord))])))\n",
+    "    \n",
+    "    return numOfWords"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "skilled-provider",
+   "metadata": {
+    "id": "skilled-provider"
+   },
+   "outputs": [],
+   "source": [
+    "def computeTF(numOfWords, listDocument):\n",
+    "    tfDict = []\n",
+    "    bagWords = []\n",
+    "    for sentence in listDocument:\n",
+    "        bagWords.append(stemmer.stem(sentence).split(\" \"))\n",
+    "    \n",
+    "    for i in range(len(numOfWords)):\n",
+    "        dictTF = {}\n",
+    "        for key, value in numOfWords[i].items():\n",
+    "            dictTF[key] = value / float(len(bagWords[i]))\n",
+    "        tfDict.append(dictTF)\n",
+    "#         dictTF = {}\n",
+    "    return tfDict"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "essential-father",
+   "metadata": {
+    "id": "essential-father"
+   },
+   "outputs": [],
+   "source": [
+    "def computeIDF(numOfWords):\n",
+    "    N = len(numOfWords)\n",
+    "    \n",
+    "    idfDict = dict.fromkeys(numOfWords[0].keys(), 0)\n",
+    "    for doc in numOfWords:\n",
+    "        for key, value in doc.items():\n",
+    "            if value > 0:\n",
+    "                idfDict[key] += 1\n",
+    "#     print (idfDict)\n",
+    "    for key, value in idfDict.items():\n",
+    "        try:\n",
+    "            idfDict[key] = round(math.log(N/float(value)),3)\n",
+    "        except ZeroDivisionError:\n",
+    "            idfDict[key] = 0\n",
+    "        \n",
+    "    \n",
+    "    return idfDict"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "ignored-message",
+   "metadata": {
+    "id": "ignored-message"
+   },
+   "outputs": [],
+   "source": [
+    "def computeTFIDF(computeTF,idf):\n",
+    "    tfidfDict = []\n",
+    "    for i in range(len(computeTF)):\n",
+    "        dictTFIDF = {}\n",
+    "        for key, value in computeTF[i].items():\n",
+    "            dictTFIDF[key] = value * idf[key]\n",
+    "        tfidfDict.append(dictTFIDF)\n",
+    "    return tfidfDict"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "LB5BLeICRs1o",
+   "metadata": {
+    "id": "LB5BLeICRs1o"
+   },
+   "outputs": [],
+   "source": [
+    "def createRanking(computeTFIDF):\n",
+    "  query = input('masukkan kata kunci: ')\n",
+    "  stemQuery= stemmer.stem(query)\n",
+    "  stemQueryList = stemQuery.split(\" \")\n",
+    "  stemQueryList\n",
+    "  documentDict = {}\n",
+    "  rankDict = {}\n",
+    "  for i in range(len(computeTFIDF)):\n",
+    "    wordsList = []\n",
+    "    for j in computeTFIDF[i].keys():\n",
+    "      if j in stemQueryList:\n",
+    "        wordsList.append(computeTFIDF[i][j])\n",
+    "      document = sum(wordsList)\n",
+    "      documentDict[f'Document ke-{i+1}']=document\n",
+    "  sorted_keys = sorted(documentDict, key=documentDict.get, reverse=True)\n",
+    "  # print(sorted_keys)\n",
+    "  for w in sorted_keys:\n",
+    "    rankDict[w] = documentDict[w]\n",
+    "  return(rankDict)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "induced-tennis",
+   "metadata": {
+    "id": "induced-tennis"
+   },
+   "outputs": [],
+   "source": [
+    "listOfWord = listOfWord(creatListDocument(docList))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "useful-peter",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "useful-peter",
+    "outputId": "e01ee16b-2e86-445a-9a73-455681d571d5"
+   },
+   "outputs": [],
+   "source": [
+    "#listOfWord"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "completed-warehouse",
+   "metadata": {
+    "id": "completed-warehouse"
+   },
+   "outputs": [],
+   "source": [
+    "lenListDocuments = len(docList)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "female-friendly",
+   "metadata": {
+    "id": "female-friendly"
+   },
+   "outputs": [],
+   "source": [
+    "numOfWords = createNumOfWords(listOfWord,lenListDocuments)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "heavy-knife",
+   "metadata": {
+    "id": "heavy-knife"
+   },
+   "outputs": [],
+   "source": [
+    "listDocs = []\n",
+    "for i in creatListDocument(docList):\n",
+    "    listDocs.append(i)\n",
+    "for index, sentence in enumerate(listDocs):\n",
+    "#     print(index,sentence)\n",
+    "    for word in stemmer.stem(sentence).split(\" \"):\n",
+    "        if word in numOfWords[index]:\n",
+    "            numOfWords[index][word]+=1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "greek-castle",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "greek-castle",
+    "outputId": "96551d41-e954-4bff-9aac-247d08feb0b6"
+   },
+   "outputs": [],
+   "source": [
+    "len(numOfWords)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "israeli-illustration",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "israeli-illustration",
+    "outputId": "fe7f2a43-4a3a-412c-8f57-fe2a7a96092a"
+   },
+   "outputs": [],
+   "source": [
+    "numOfWords"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "alert-partnership",
+   "metadata": {
+    "id": "alert-partnership"
+   },
+   "outputs": [],
+   "source": [
+    "computeTF = computeTF(numOfWords, creatListDocument(docList))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fossil-attempt",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "fossil-attempt",
+    "outputId": "569fe4ca-4b53-43bf-eb34-0d64e98c7ae4"
+   },
+   "outputs": [],
+   "source": [
+    "computeTF"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "intensive-forwarding",
+   "metadata": {
+    "id": "intensive-forwarding"
+   },
+   "outputs": [],
+   "source": [
+    "computeIDF = computeIDF(numOfWords)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cJUzktkXjJhA",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "cJUzktkXjJhA",
+    "outputId": "5404df8b-7862-4b3a-d226-5790be44deef"
+   },
+   "outputs": [],
+   "source": [
+    "computeIDF"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "accessible-determination",
+   "metadata": {
+    "id": "accessible-determination"
+   },
+   "outputs": [],
+   "source": [
+    "computeTFIDF = computeTFIDF(computeTF,computeIDF)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "literary-graduate",
+   "metadata": {
+    "id": "literary-graduate"
+   },
+   "outputs": [],
+   "source": [
+    "df = pd.DataFrame(computeTFIDF)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fiscal-attendance",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 185
+    },
+    "id": "fiscal-attendance",
+    "outputId": "e9df0826-0c9c-408a-8d70-bde7bb2e14fe"
+   },
+   "outputs": [],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "damaged-moore",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "damaged-moore",
+    "outputId": "f067ab77-e1bb-4b21-eaa7-af37e59ab935"
+   },
+   "outputs": [],
+   "source": [
+    "computeTFIDF"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "BUFDm7qCGjEq",
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "BUFDm7qCGjEq",
+    "outputId": "5048e489-94d4-4324-f592-2753c5215890"
+   },
+   "outputs": [],
+   "source": [
+    "dataRank = createRanking(computeTFIDF)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "97b93ada-6732-42d5-bd9f-0909ac4bbf76",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "relevantDoc = int(input(\"Masukkan banyak dokumen yang relevan: \"))\n",
+    "docDatabase = int(input(\"Masukkan banyak dokumen yang ada di database: \"))\n",
+    "recall = (relevantDoc/docDatabase)*100\n",
+    "\n",
+    "print(f'Recall: {recall}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1aa3e4f5-912a-460c-871c-69ea3fac061c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "relevantDoc = int(input(\"Masukkan banyak dokumen yang relevan: \"))\n",
+    "precision = (relevantDoc/len(dataRank))*100\n",
+    "\n",
+    "print(f'Precision: {precision}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ee8f56f7-e81a-4a94-953f-23fececdf764",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b274d559-41c7-49f0-9009-1b0f25631816",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "collapsed_sections": [],
+   "name": "tfidf (1).ipynb",
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

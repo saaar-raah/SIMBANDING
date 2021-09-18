@@ -6,7 +6,6 @@
 
 
 
-    <x-notif/>
 
     <div class="row">
         {{-- <div class="col-7 align-self-center">
@@ -32,6 +31,8 @@
     </div>
 
 <div class="container-fluid">
+
+    <x-notif/>
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
@@ -45,16 +46,14 @@
 
                             <div class="modal-body">
                                 <div class="text-center mt-2 mb-4">
-                                    <a href="index.html" class="text-success">
                                         {{-- <span><img class="mr-2" src="../assets/images/logo-icon.png"
                                                 alt="" height="18"><img
                                                 src="../assets/images/logo-text.png" alt=""
                                                 height="18"></span> --}}
-                                                <h3 class="text-dark">Tambah Data</h3>
-                                    </a>
+                                    <h3 class="text-dark">Tambah Data</h3>
                                 </div>
 
-                                <form  method="POST" action="{{route('berkasAdmin.store')}}" class="pl-3 pr-3" action="#" enctype="multipart/form-data">
+                                <form  method="POST" action="{{URL::route('berkasAdmin.store')}}" class="pl-3 pr-3" action="#" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label>Nama Berkas</label>
@@ -66,10 +65,10 @@
                                         {{-- <input name="isi" type="text" class="form-control" placeholder="isi"> --}}
                                         <textarea name="isi" class="isi" placeholder="isi"></textarea>
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>Icon</label>
                                         <input name="icon" type="file" class="form-control" placeholder="Masukkan Icon dari fontawesome.com" required>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group text-center">
                                         <button class="btn btn-primary" type="submit">Submit</button>
@@ -86,44 +85,50 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">BERKAS</h4>
-                    <h6 class="card-subtitle">VIEW DATA BERKAS
+                    <h4 class="card-title">Berkas</h4>
+                    <h6 class="card-subtitle">Halaman untuk mengatur informasi berkas yang dibutuhkan.
                     </h6>
                     <div class="btn-list  pt-2 pb-2">
                         <!-- Custom width modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#signup-modal">Tambah Data</button>
+                            data-target="#signup-modal"><p style="font-size: 14px"><strong>New Data</strong></p></button>
 
                     </div>
                     <div class="table-responsive">
-                        <table id="myTable" class="table table-striped table-bordered no-wrap">
-                            <thead>
+                        <table id="myTable" class="table table-sm-td table-hover table-striped table-bordered no-wrap">
+                            <thead class="thead-primary">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>NAMA BERKAS</th>
-                                    <th>ISI</th>
-                                    <th>ICON</th>
+                                    <th>No.</th>
+                                    <th>Nama Berkas</th>
+                                    <th>Isi</th>
+                                    {{-- <th>Icon</th> --}}
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($berkas as $item)
                                 <tr>
-                                    <td>{{ $item->id}}</td>
-                                    <td>{!! $item->judul !!}</td>
-                                    <td>{!! $item->isi !!}</td>
-                                    <td>{!! $item->icon !!}</td>
-                                    <td>
-                                        <button style="border-radius: 15px; color: #fff" class="btn waves-effect waves-light btn-warning">
-                                            <a href="{{route('berkasAdmin.edit',$item->id)}}">
-                                                <i class="fas fa-edit" style="color: #FFFF"></i>
-                                            </a>Edit
-                                            </button>
-                                    <form  class="btn" method="post" action="{{route('berkasAdmin.destroy',$item->id)}}">
+                                    <td style="text-align: center;">{{$item->id}}</td>
+                                    <td style=
+                                    "max-width: 18rem;
+                                    white-space: nowrap;
+                                    overflow: auto;">{!!$item->judul!!}</td>
+                                    <td style=
+                                    "max-width: 18rem;
+                                    white-space: nowrap;
+                                    overflow: auto;
+                                    text-overflow: ellipsis;">{!!$item->isi!!}</td>
+                                    {{-- <td>{!! $item->icon !!}</td> --}}
+                                    <td style="text-align: center;">
+                                    <a style="border-radius: 15px" href="{{route('berkasAdmin.edit',$item->id)}}"
+                                        class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form  class="btn p-0" method="post" action="{{URL::route('berkasAdmin.destroy',$item->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                    <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
-                                        <i class="far fa-trash-alt"></i>
+                                    <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
+                                        <i class="far fa-trash-alt"></i> Delete
                                     </button>
                                     </form>
                                     </td>
@@ -154,14 +159,33 @@
 @endpush
 
 <script src="https://cdn.tiny.cloud/1/1c1ffy2lfue3xw9hm1dl4iopopu0tjwwtk19iihkcl871ajo/tinymce/5/tinymce.min.js"
-  referrerpolicy="origin"></script>
+  referrerpolicy="origin">
+
+</script>
 
 <script>
-  tinymce.init({
-    selector: "textarea.judul",
-  });
-  tinymce.init({
-      selector: "textarea.isi",
-  });
+    tinymce.init({
+        selector: "textarea.judul",
+        min_height: 300,
+        max_height: 500,
+        plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+        toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+        toolbar_mode: 'wrap',
+        menubar: false,
+        branding: false,
+
+    });
+    tinymce.init({
+        selector: "textarea.isi",
+        min_height: 300,
+        max_height: 500,
+        plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+        toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+        toolbar_mode: 'wrap',
+        menubar: false,
+        branding: false,
+    });
+
 </script>
+
 @endsection

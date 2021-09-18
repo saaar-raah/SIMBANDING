@@ -9,10 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Login - SIBANDING</title>
+    <title>Login - SIMBANDING</title>
     <!-- Custom CSS -->
-    <link href="{{asset('admin/dist/css/style.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('admin/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,13 +45,13 @@
                 <div class="col-lg-7 col-md-7 m-auto bg-white">
                     <div class="p-3">
                         <div class="text-center">
-                            <a href="/">
+                            <a href="{{URL('/')}}">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Lambang_ITK.png" width="80" alt="wrapkit">
                             </a>
                         </div>
                         <h2 class="mt-3 text-center">Sign In</h2>
                         <p class="text-center">Enter your email address and password to access admin panel.</p>
-                        <form class="mt-4" method="POST" action="{{ route('login') }}">
+                        <form class="mt-4" method="POST" action="{{URL::route('login') }}">
                                 @csrf
                             <div class="row">
                                 <div class="col-lg-12">
@@ -88,10 +87,10 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="{{('admin/assets/libs/jquery/dist/jquery.min.js ')}}"></script>
+    <script src="{{URL('admin/assets/libs/jquery/dist/jquery.min.js ')}}"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{('admin/assets/libs/popper.js/dist/umd/popper.min.js')}} "></script>
-    <script src="{{('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js ')}}"></script>
+    <script src="{{URL('admin/assets/libs/popper.js/dist/umd/popper.min.js')}} "></script>
+    <script src="{{URL('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js ')}}"></script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->

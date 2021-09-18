@@ -17,7 +17,6 @@ class CreateAlursTable extends Migration
             $table->id();
             $table->string('nama_alur');
             $table->string('isi');
-            $table->string('link');
             $table->string('urutan')->unique();
             $table->timestamps();
         });

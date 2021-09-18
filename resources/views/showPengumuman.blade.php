@@ -23,7 +23,7 @@
             <div class="col-lg-8 m-15px-tb">
                 <article class="article">
                     <div class="article-img" >
-                        <img id="uk" src="{{asset('/img/pengumuman/'.$pengumumans->foto)}}" title="" alt="">
+                        <img id="uk" src="{{URL::asset('/img/pengumuman/'.$pengumumans->foto)}}" title="" alt="">
                     </div>
                     <div class="article-title aos-init aos-animate" data-aos="fade-left" data-aos-delay="100">
                         {{-- <h6><a href="#">Lifestyle</a></h6> --}}
@@ -109,7 +109,7 @@
                             </div>
                             <div class="lpa-right">
                                 <a href="#">
-                                    <img src="{{asset('img/pengumuman/'.$item->foto)}}" title="" alt="">
+                                    <img src="{{URL::asset('img/pengumuman/'.$item->foto)}}" title="" alt="">
                                 </a>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\berkas;
+use App\berkas;
 use Illuminate\Http\Request;
 
 class BerkasController extends Controller
@@ -24,18 +24,18 @@ class BerkasController extends Controller
             'judul' => 'required',
             'isi' => 'required',
         ]);
-        if (isset($request->icon)){
-            $extention = $request->icon->extension();
-            $image_name = time().'.'.$extention;
-            $request->icon->move(public_path('img\icon'),$image_name);
+        // if (isset($request->icon)){
+        //     $extention = $request->icon->extension();
+        //     $image_name = time().'.'.$extention;
+        //     $request->icon->move(public_path('img\icon'),$image_name);
 
-        }else{
-            $image_name = null;
-        }
+        // }else{
+        //     $image_name = null;
+        // }
             $berkas = berkas::create([
                 'judul' => $request->judul,
                 'isi' => $request->isi,
-                'icon' => $image_name,
+                // 'icon' => $image_name,
             ]);
         return redirect()->route('berkasAdmin.index')
             ->with('success', 'berkas Berhasil Ditambahkan');
@@ -62,17 +62,17 @@ class BerkasController extends Controller
         $berkas = berkas::find($id);
         $berkas->judul = $request->get('judul');
         $berkas->isi = $request->get('isi');
-        $berkas->icon = $request->get('icon');
-        if (isset($request->icon)){
-            $extention = $request->icon->extension();
-            $image_name = time().'.'.$extention;
-            unlink(public_path('img/icon/'.$berkas->icon));
-            $request->icon->move(public_path('img/icon'),$image_name);
-            $berkas->icon = $image_name;
+        // $berkas->icon = $request->get('icon');
+        // if (isset($request->icon)){
+        //     $extention = $request->icon->extension();
+        //     $image_name = time().'.'.$extention;
+        //     unlink(public_path('img/icon/'.$berkas->icon));
+        //     $request->icon->move(public_path('img/icon'),$image_name);
+        //     $berkas->icon = $image_name;
 
-        }else{
-            $image_name = null;
-        }
+        // }else{
+        //     $image_name = null;
+        // }
         $berkas->save();
 
 

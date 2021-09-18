@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\pengumuman;
+use App\pengumuman;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -47,7 +47,8 @@ class PengumumanController extends Controller
     public function show($id)
     {
         $pengumumans = pengumuman::where('id', $id)->first();
-        return view('showPengumuman', compact('pengumumans'))
+        $newspengumuman =  pengumuman::latest()->paginate(5);
+        return view('showPengumuman', compact('pengumumans','newspengumuman'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

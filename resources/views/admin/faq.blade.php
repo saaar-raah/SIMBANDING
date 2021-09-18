@@ -6,7 +6,7 @@
 
 
 
-    <x-notif/>
+
 
     <div class="row">
         {{-- <div class="col-7 align-self-center">
@@ -32,6 +32,7 @@
     </div>
 
 <div class="container-fluid">
+    <x-notif/>
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
@@ -50,26 +51,24 @@
 
                             <div class="modal-body">
                                 <div class="text-center mt-2 mb-4">
-                                    <a href="index.html" class="text-success">
                                         {{-- <span><img class="mr-2" src="../assets/images/logo-icon.png"
                                                 alt="" height="18"><img
                                                 src="../assets/images/logo-text.png" alt=""
                                                 height="18"></span> --}}
-                                                <h3 class="text-dark">Tambah Data</h3>
-                                    </a>
+                                      <h3 class="text-dark">Tambah Data</h3>
                                 </div>
 
-                                <form  method="POST" action="{{route('FAQAdmin.store')}}" class="pl-3 pr-3" action="#">
+                                <form  method="POST" action="{{URL::route('FAQAdmin.store')}}" class="pl-3 pr-3" action="#">
                                     @csrf
                                     <div class="form-group">
                                         <label>Pertanyaan</label>
                                         {{-- <input type="text" name="pertanyaan" class="form-control" placeholder="Pertanyaan"> --}}
-                                        <textarea name="pertanyaan" class="pertanyaan" placeholder="Pertanyaan"></textarea>
+                                        <textarea name="pertanyaan" class="pertanyaan" placeholder="Pertanyaan" ></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Jawaban</label>
                                         {{-- <input name="jawaban" type="text" class="form-control" placeholder="Jawaban"> --}}
-                                        <textarea name="jawaban" class="jawaban" placeholder="Jawaban"></textarea>
+                                        <textarea name="jawaban" class="jawaban" placeholder="Jawaban" ></textarea>
                                     </div>
 
                                     <div class="form-group text-center">
@@ -96,12 +95,12 @@
                     <div class="btn-list pt-2 pb-2">
                         <!-- Custom width modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#signup-modal">Tambah Data</button>
+                            data-target="#signup-modal"><p style="font-size: 14px"><strong>New Data</strong></p></button>
                     </div>
 
                     <div class="table-responsive">
-                        <table id="myTable" class="table table-striped table-bordered no-wrap">
-                            <thead>
+                        <table id="myTable" class="table table-sm-td table-hover table-striped table-bordered no-wrap">
+                            <thead class="thead-primary">
                                 <tr>
                                     <th>No.</th>
                                     <th>Pertanyaan</th>
@@ -112,22 +111,29 @@
                             <tbody>
                                 @foreach ($FAQ as $FAQS)
                                 <tr>
-                                    <td>{{ $FAQS->id}}</td>
-                                    <td>{!! $FAQS->pertanyaan !!}</td>
-                                    <td>{!! $FAQS->jawaban !!}</td>
-                                    <td>
+                                    <td style="text-align: center;">{{ $FAQS->id}}</td>
+                                    <td style=
+                                    "max-width: 18rem;
+                                    white-space: nowrap;
+                                    overflow: auto;
+                                    text-overflow: ellipsis;">{!!substr("$FAQS->pertanyaan",0,49)!!}</td>
+                                    <td style=
+                                    "max-width: 18rem;
+                                    white-space: nowrap;
+                                    overflow: auto;
+                                    text-overflow: ellipsis;">{!!substr("$FAQS->jawaban",0,49)!!}</td>
+                                    <td style="text-align: center;">
                                     {{-- <a href="{{route('FAQAdmin.edit',$FAQS->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
                                         <i class="fas fa-edit"> EDIT</i>
                                     </a> --}}
-                                    <button style="border-radius: 15px; color: #fff" class="btn waves-effect waves-light btn-warning">
-                                    <a href="{{route('FAQAdmin.edit',$FAQS->id)}}">
-                                        <i class="fas fa-edit" style="color: #FFFF"></i>
-                                    </a>Edit
-                                    </button>
-                                    <form  class="btn" method="post" action="{{route('FAQAdmin.destroy',$FAQS->id)}}">
+                                    <a style="border-radius: 15px" href="{{URL::route('FAQAdmin.edit',$FAQS->id)}}"
+                                        class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form  class="btn p-0" method="post" action="{{URL::route('FAQAdmin.destroy',$FAQS->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                    <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-danger">
+                                    <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
                                         <i class="far fa-trash-alt"></i> Delete
                                     </button>
                                     </form>
@@ -164,9 +170,23 @@
 <script>
   tinymce.init({
     selector: "textarea.pertanyaan",
+    min_height: 300,
+    max_height: 500,
+    plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+    toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+    toolbar_mode: 'wrap',
+    menubar: false,
+    branding: false,
   });
   tinymce.init({
       selector: "textarea.jawaban",
+      min_height: 300,
+      max_height: 500,
+      plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+      toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+      toolbar_mode: 'wrap',
+      menubar: false,
+      branding: false,
   });
 </script>
 @endsection

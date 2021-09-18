@@ -1,70 +1,60 @@
+{{-- <img class="ml-auto" src="https://itk.ac.id/wp-content/uploads/2020/04/LOGO-ITK-Terbaru-1.png" style="height: 170px; "></img> --}}
+{{-- <section id="contact" class="contact pt-5 pb-5">
+    <div style="color:#ffffff!important" class=" container" data-aos="fade-up">
+        <div class="d-flex bd-highlight mb-3">
+            <div class="mr-auto p-2 bd-highlight">Flex item</div>
+            <div class="p-2 bd-highlight">Flex item</div>
+            <div class="p-2 bd-highlight">Flex item</div>
+          </div>
+    </div>
+</section> --}}
 
-<section id="contact" class="contact pt-5 pb-5">
-    <div class="container" data-aos="fade-up">
-        <div class="d-flex p-2">
-            <div class="row">
-                <div class="col">
-                    <div d-flex>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Lambang_ITK.png" style="height: 170px; width: auto"></img>
-                    </div>
-                </div>
+<footer id="footer">
 
-            </div>
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
 
-            <div class="row">
-                <div class="col mr-10">
-                    <div class="d-flex-row">
-                        <i class="far fa-envelope"></i>
-                        <h4>Email:</h4>
-                        <p>humas@itk.ac.id</p>
-                    </div>
-                </div>
+          <div class="col-lg-3 col-md-6 ">
+            <img class="" src="https://itk.ac.id/wp-content/uploads/2020/04/LOGO-ITK-Terbaru-1.png" style="height: 170px; "></img>
+          </div>
 
-            </div>
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Jam Layanan</h3>
+            <p>
+              Senin-Jumat 07.30-15.30 WITA
+               <br>
+               istirahat 12.00-13.00 WITA<br>
+               <br>
+               <h3>Kontak</h3>
+              <strong>Phone:</strong> 0542-8530800 (Telepon)<br>
+              <strong>Email:</strong> humas@itk.ac.id<br>
+            </p>
+          </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="email">
-                        <i class="far fa-envelope"></i>
-                        <h4>Email:</h4>
-                        <p>humas@itk.ac.id</p>
-                    </div>
-                </div>
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Unit Layanan</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">UPT. Komputer dan Jaringan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">UPT. Bahasa</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">UPT. Perpustakaan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">LPPM</a></li>
+              {{-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> --}}
+            </ul>
+          </div>
 
-            </div>
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Pranala Luar</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Dirjen Dikti</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Kemdikbudristek</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">KIP Kuliah</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Pemprov Kalimantan Timur</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Pemkot Balikpapan</a></li>
+            </ul>
+          </div>
 
         </div>
-
-        {{-- <div class="row mt-1">
-            <div class="col-lg-4">
-                <div class="info">
-
-                    <div class="email">
-                        <i class="far fa-envelope"></i>
-                        <h4>Email:</h4>
-                        <p>humas@itk.ac.id</p>
-                    </div>
-
-                    <div class="phone">
-                        <i class="fas fa-phone-alt"></i>
-                        <h4>Call:</h4>
-                        <p>0542-8530800</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-8 mt-5 mt-lg-0">
-              <div>
-                <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15956.05644582652!2d116.8615344!3d-1.1504104!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8489d5309f45c0db!2sInstitut%20Teknologi%20Kalimantan!5e0!3m2!1sid!2sid!4v1626523708229!5m2!1sid!2sid"
-                    frameborder="0" allowfullscreen></iframe>
-            </div>
-                
-
-            </div>
-
-        </div> --}}
-
+      </div>
     </div>
-</section>
+  </footer>

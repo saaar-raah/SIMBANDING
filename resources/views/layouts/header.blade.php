@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   {{-- <meta content="width=device-width, initial-scale=1.0" name="viewport"> --}}
   <meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=1.00, user-scalable=no">
-  <title>SIBANDING</title>
+  <title>SIMBANDING</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -15,17 +15,18 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="{{URL::asset('admin/dist/css/style.css')}}" rel="stylesheet">
+  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <!-- JS -->
-  <link rel="stylesheet" href="{{asset('/venobox/venobox.css')}}" type="text/css" media="screen" />
-  <link href="{{asset('/css/owl.carousel/owl.carousel.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{URL::asset('/venobox/venobox.css')}}" type="text/css" media="screen" />
+  <link href="{{URL::asset('/css/owl.carousel/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <!-- Template Main CSS File -->
-  <link href="{{asset('/css/style.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('/css/style.css')}}" rel="stylesheet">
 
   @yield('css')
 

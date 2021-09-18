@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<div class="page-breadcrumb">
+{{-- <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">
             <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Edit berkas</h4>
@@ -13,7 +13,7 @@
                 </nav>
             </div>
         </div>
-        {{-- <div class="col-5 align-self-center">
+        <div class="col-5 align-self-center">
             <div class="customize-input float-right">
                 <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                     <option selected="">Aug 19</option>
@@ -21,21 +21,21 @@
                     <option value="2">Jun 19</option>
                 </select>
             </div>
-        </div> --}}
+        </div>
     </div>
-</div>
+</div> --}}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Edit berkas</h4>
-                    <form method="POST" action="{{route('berkasAdmin.update',$berkas->id)}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{URL::route('berkasAdmin.update',$berkas->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-lg">
                                     <div class="form-group">
                                         <label>Judul</label>
                                         <textarea name="judul" class="judul" placeholder="judul">
@@ -51,7 +51,7 @@
                                 </div> --}}
                             </div>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-lg">
                                     <div class="form-group">
                                         <label>Isi</label>
                                         <textarea name="isi" class="isi" placeholder="isi">
@@ -61,14 +61,14 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label>Icon</label>
                                         <input name="icon" type="text" class="form-control" value="{{$berkas->icon}}" required>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="form-actions">
                             <div class="text-right">
@@ -87,11 +87,23 @@
 </script>
 <script>
     tinymce.init({
-      selector: "textarea.judul",
-    });
+        selector: "textarea.judul",
+        min_height: 300,
+        max_height: 500,
+        plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+        toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+        toolbar_mode: 'wrap',
+        menubar: false,
+        branding: false,    });
     tinymce.init({
         selector: "textarea.isi",
-    });
+        min_height: 300,
+        max_height: 500,
+        plugins: 'preview autoresize paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen template codesample charmap hr nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons',
+        toolbar: 'undo redo | cut copy paste | bold italic underline | strikethrough superscript subscript | fontsizeselect | hr lineheight | ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | charmap emoticons | fullscreen  preview ',
+        toolbar_mode: 'wrap',
+        menubar: false,
+        branding: false,    });
   </script>
 @endpush
 @endsection
